@@ -3,7 +3,7 @@ name: ESLint Check
 on:
   pull_request:
     branches:
-      - main  # Adjust the branch name as needed
+      - master  # Adjust the branch name as needed
 
 jobs:
   lint:
