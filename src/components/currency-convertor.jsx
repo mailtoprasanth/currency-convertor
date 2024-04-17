@@ -50,9 +50,9 @@ const CurrencyConvertor = () => {
       const data = await res.json();
       console.log(data);
       setConvertedAmount(data.rates[toCurrency]);
-      setError('');
+      setError("");
     } catch (error) {
-      setError(error?.message)
+      setError(error?.message);
       console.log(error);
     } finally {
       setConverting(false);
@@ -64,12 +64,12 @@ const CurrencyConvertor = () => {
       <h2 className="mb-5 text-xl font-semibold text-gray-700  ">
         Currency Convertor
       </h2>
-      {
-            error && (<span className="flex justify-center gap-1 font-medium text-red-500"> 
-           <TbInfoTriangle className=" text-xl" /> Please try with other currency</span>)
-          }
+      {error && (
+        <span className="flex justify-center gap-1 font-medium text-red-500">
+          <TbInfoTriangle className=" text-xl" /> Please try with other currency
+        </span>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
-       
         <CurrencyDropdown
           currencies={currencies}
           title="From"
