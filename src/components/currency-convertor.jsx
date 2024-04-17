@@ -111,7 +111,7 @@ const CurrencyConvertor = () => {
           onClick={convert}
           type="button"
           className={`py-2 px-6 bg-indigo-600 focus:outline-none focus:ring-indigo-950 focus:ring-2 text-white hover:bg-indigo-700 focus:ring-offset-1 rounded-lg ${
-            converting ? "animate-spin" : ""
+            converting ? "animate-pulse" : ""
           }`}
         >
           Convert
