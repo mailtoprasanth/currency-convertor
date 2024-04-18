@@ -58,7 +58,6 @@ const CurrencyConvertor = () => {
       setConverting(false);
     }
   };
-
   useEffect(() => {
     convert();
   }, [toCurrency]);
