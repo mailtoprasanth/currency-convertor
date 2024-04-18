@@ -59,10 +59,6 @@ const CurrencyConvertor = () => {
     }
   };
 
-  useEffect(() => {
-    convert();
-  }, [toCurrency]);
-
   return (
     <div className="max-w-xl mx-auto my-10 p-5 bg-white rounded-lg shadow-md">
       <h2 className="mb-5 text-xl font-semibold text-gray-700  ">
