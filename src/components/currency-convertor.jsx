@@ -35,7 +35,7 @@ const CurrencyConvertor = () => {
       console.log(error);
     }
   };
-  console.log(currencies);
+
   useEffect(() => {
     fetchCurrencies();
   }, []);
@@ -58,7 +58,7 @@ const CurrencyConvertor = () => {
       setConverting(false);
     }
   };
-  
+
   useEffect(() => {
     convert();
   }, [toCurrency]);
