@@ -17,24 +17,11 @@ const CurrencyConvertor = () => {
   const [toCurrency, setToCurrency] = useState("INR");
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [converting, setConverting] = useState(false);
-  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem("favorites")) || ["GBP","INR"]);
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || ["GBP", "INR"]
+  );
 
-  const favHandler = (currency) => {
-    let updateFavorites = [...favorites];
-    if(favorites.includes(currency)){
-    updateFavorites =  updateFavorites.filter((fav)=> fav !== currency);
-  } else {
-    updateFavorites.push(currency);
-  }
-  setFavorites(updateFavorites);
-  localStorage.setItem("favorites",JSON.stringify(updateFavorites))
-    console.log(currency);
-  };
-
-  const swapCurrencies = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
-  };
+  // API Call
   const fetchCurrencies = async () => {
     try {
       const res = await fetch(`${host + getCurrencies}`);
@@ -72,6 +59,25 @@ const CurrencyConvertor = () => {
     convert();
   }, [toCurrency]);
 
+  // API Call END
+
+  const favHandler = (currency) => {
+    let updateFavorites = [...favorites];
+    if (favorites.includes(currency)) {
+      updateFavorites = updateFavorites.filter((fav) => fav !== currency);
+    } else {
+      updateFavorites.push(currency);
+    }
+    setFavorites(updateFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updateFavorites));
+    console.log(currency);
+  };
+
+  const swapCurrencies = () => {
+    setFromCurrency(toCurrency);
+    setToCurrency(fromCurrency);
+  };
+
   return (
     <div className="max-w-xl mx-auto my-10 p-5 bg-white rounded-lg shadow-md">
       <h2 className="mb-5 text-xl font-semibold text-gray-700  ">
@@ -84,7 +90,7 @@ const CurrencyConvertor = () => {
       )}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
         <CurrencyDropdown
-          favorites={[favorites]}
+          favorites={favorites}
           currencies={currencies}
           title="From"
           favHandler={favHandler}
@@ -101,7 +107,7 @@ const CurrencyConvertor = () => {
           </button>
         </div>
         <CurrencyDropdown
-        favorites={favorites}
+          favorites={favorites}
           currencies={currencies}
           title="To"
           favHandler={favHandler}
