@@ -11,8 +11,7 @@ const CurrencyDropdown = ({
   favHandler,
   title = "",
 }) => {
-
-    const isFavorites= data => favorites.includes(data); 
+  const isFavorites = (data) => favorites.includes(data);
   return (
     <div className="mt-2">
       <label className=" text-gray-800 " htmlFor={title}>
@@ -34,26 +33,21 @@ const CurrencyDropdown = ({
           })}
           <hr />
           {currencies
-          .filter(c=> !favorites.includes(c))
-          .map((data) => {
-            return (
-              <option value={data} key={data}>
-                {data}
-              </option>
-            );
-          })}
+            .filter((c) => !favorites.includes(c))
+            .map((data) => {
+              return (
+                <option value={data} key={data}>
+                  {data}
+                </option>
+              );
+            })}
         </select>
         <button
           onClick={() => favHandler(currency)}
           className=" absolute insert-y-0 right-0 bottom-0 top-0 pr-5 flex items-center text-sm leading-5"
           type="button"
         >
-            {
-                isFavorites(currency)?
-                <HiStar/>:
-                <HiOutlineStar />
-            }
-    
+          {isFavorites(currency) ? <HiStar /> : <HiOutlineStar />}
         </button>
       </div>
     </div>
