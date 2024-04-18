@@ -20,7 +20,9 @@ const CurrencyConvertor = () => {
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [converting, setConverting] = useState(false);
 
-  const favHandler = (currency) => {};
+  const favHandler = (currency) => {
+    console.log(currency);
+  };
 
   const swapCurrencies = () => {
     setFromCurrency(toCurrency);
