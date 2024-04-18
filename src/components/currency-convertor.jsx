@@ -17,8 +17,17 @@ const CurrencyConvertor = () => {
   const [toCurrency, setToCurrency] = useState("INR");
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [converting, setConverting] = useState(false);
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem("favorites")) || ["GBP","INR"]);
 
   const favHandler = (currency) => {
+    let updateFavorites = [...favorites];
+    if(favorites.includes(currency)){
+    updateFavorites =  updateFavorites.filter((fav)=> fav !== currency);
+  } else {
+    updateFavorites.push(currency);
+  }
+  setFavorites(updateFavorites);
+  localStorage.setItem("favorites",JSON.stringify(updateFavorites))
     console.log(currency);
   };
 
@@ -75,6 +84,7 @@ const CurrencyConvertor = () => {
       )}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
         <CurrencyDropdown
+          favorites={[favorites]}
           currencies={currencies}
           title="From"
           favHandler={favHandler}
@@ -91,8 +101,8 @@ const CurrencyConvertor = () => {
           </button>
         </div>
         <CurrencyDropdown
+        favorites={favorites}
           currencies={currencies}
-          t
           title="To"
           favHandler={favHandler}
           currency={toCurrency}
