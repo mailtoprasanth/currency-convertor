@@ -20,7 +20,9 @@ const CurrencyConvertor = () => {
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [converting, setConverting] = useState(false);
 
-  const favHandler = (currency) => {};
+  const favHandler = (currency) => {
+    console.log(currency);
+  };
 
   const swapCurrencies = () => {
     setFromCurrency(toCurrency);
@@ -58,6 +60,10 @@ const CurrencyConvertor = () => {
       setConverting(false);
     }
   };
+  
+  useEffect(() => {
+    convert();
+  }, [toCurrency]);
 
   return (
     <div className="max-w-xl mx-auto my-10 p-5 bg-white rounded-lg shadow-md">
