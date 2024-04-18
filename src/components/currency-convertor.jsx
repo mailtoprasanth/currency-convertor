@@ -13,9 +13,8 @@ const CurrencyConvertor = () => {
   const [error, setError] = useState("");
   const [amount, setAmount] = useState(1);
   const [currencies, setCurrencies] = useState([]);
-
   const [fromCurrency, setFromCurrency] = useState("GBP");
-  const [toCurrency, setToCurrency] = useState("IND");
+  const [toCurrency, setToCurrency] = useState("INR");
 
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [converting, setConverting] = useState(false);
